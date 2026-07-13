@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ここだけ掲示板(仮) - モック v2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- 左: 広告枠(忍者AdMaxタグをここに入れる予定) -->
+  <aside class="ad-slot" aria-label="広告スペース">
+    <span class="ad-label">A D</span>
+    <span>広告スペース</span>
+    <span style="font-size:11px">160×600</span>
+  </aside>
+
+  <main class="main">
+
+    <!-- チャット表示エリア(部屋は今は1つだけ) -->
+    <div class="chat-panel" id="chatPanel" aria-live="polite">
+      <div class="chat-spacer"></div>
+      <!-- ここにメッセージが追加される -->
+    </div>
+
+    <!-- 入力欄(中央寄せ) -->
+    <div class="composer">
+      <textarea id="input" placeholder="ここに入力" maxlength="120" rows="2"></textarea>
+      <div class="composer-footer">
+        <span class="char-count" id="charCount">0 / 100</span>
+        <span class="cooldown-label" id="cooldownLabel"></span>
+        <button class="send-btn" id="sendBtn" aria-label="送信">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 20l18-8L3 4v6l12 2-12 2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- デモ用: 混雑シミュレーション(本番では削除) -->
+    <div class="demo-bar">
+      <span>【モック用】混雑シミュレーション:</span>
+      <button id="demoSlow">ゆっくり</button>
+      <button id="demoFast">爆速</button>
+      <button id="demoOff" class="on">停止</button>
+    </div>
+
+  </main>
+
+  <!-- 右: 将来の拡張用スペース(左と対称) -->
+  <div class="side-spacer" aria-hidden="true"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
