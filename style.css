@@ -150,27 +150,15 @@ body {
 .send-btn svg { width: 26px; height: 26px; }
 .cooldown-label { font-size: 12px; color: #666; min-width: 3em; text-align: right; }
 
-/* デモ用コントロール */
-.demo-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+/* 接続状態・エラー表示 */
+.status {
+  text-align: center;
   font-size: 13px;
-  color: #6b6b6b;
+  color: var(--text-sub);
+  min-height: 1.2em;
   padding: 0 4px;
 }
-.demo-bar button {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-family: inherit;
-  font-size: 13px;
-  cursor: pointer;
-  background: #fafafa;
-  color: var(--text);
-}
-.demo-bar button.on { background: #5b7a49; border-color: #5b7a49; color: #fff; }
+.status.error { color: #c0392b; }
 
 /* スマホ対応: 両サイド非表示 */
 @media (max-width: 820px) {
