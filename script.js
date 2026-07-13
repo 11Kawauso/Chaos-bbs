@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 const MAX_CHARS = 100;
 const COOLDOWN_SEC = 5;
-const MESSAGE_LIMIT = 50;   // 画面に表示する最新件数
+const MESSAGE_LIMIT = 20;   // 画面に表示する最新件数
 const ROOM_ID = "1";        // 部屋を増やすときはここを切り替える仕組みにする
 
 const app = initializeApp(firebaseConfig);
