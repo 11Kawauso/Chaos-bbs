@@ -68,13 +68,9 @@ body {
   top: 24px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.04);
   overflow: hidden;
-}
-.precepts-title {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 14px;
-  margin-left: 16px;
-  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .precepts-list {
   list-style: none;
@@ -201,15 +197,10 @@ body {
     position: static;
     padding: 12px 16px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    justify-content: center;
     gap: 14px;
     flex-wrap: wrap;
-  }
-  .precepts-title {
-    font-size: 15px;
-    letter-spacing: 6px;
-    margin-left: 0;
-    flex-shrink: 0;
   }
   .precepts-list {
     flex-direction: row;
