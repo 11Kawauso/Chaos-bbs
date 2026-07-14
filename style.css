@@ -47,16 +47,38 @@ body {
   top: 24px;
 }
 .ad-slot .ad-label { font-size: 11px; letter-spacing: 2px; }
-/*
-  ▼ 忍者AdMaxのタグをもらったら、この .ad-slot の中身を
-    発行されたスクリプトタグに差し替える(160×600の枠を作成すること)
-    ※デプロイ後、登録したURL上でしか広告は表示されません
-*/
 
-/* ---- 右のスペース(左右対称・将来の拡張用) ---- */
-.side-spacer {
+/* ---- 右の心得(道場の掛け軸風・縦書き) ---- */
+.precepts {
   flex: 0 0 160px;
   height: 600px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 28px 18px;
+  writing-mode: vertical-rl;
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+  color: #5a5a5a;
+  position: sticky;
+  top: 24px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+.precepts-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 14px;
+  margin-left: 16px;
+  color: #444;
+}
+.precepts-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+.precepts-list li {
+  font-size: 14px;
+  letter-spacing: 4px;
+  line-height: 1.4;
 }
 
 /* ---- メイン ---- */
@@ -160,8 +182,39 @@ body {
 }
 .status.error { color: #c0392b; }
 
-/* スマホ対応: 両サイド非表示 */
+/* スマホ対応: 広告は非表示、心得は横書きでチャットの上に */
 @media (max-width: 820px) {
-  .ad-slot, .side-spacer { display: none; }
+  .layout { flex-direction: column; gap: 14px; }
+  .ad-slot { display: none; }
+
+  .precepts {
+    order: -1;
+    writing-mode: horizontal-tb;
+    width: 100%;
+    height: auto;
+    position: static;
+    padding: 12px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .precepts-title {
+    font-size: 15px;
+    letter-spacing: 6px;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+  .precepts-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .precepts-list li {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .main { width: 100%; }
   .chat-panel { height: 58vh; }
 }

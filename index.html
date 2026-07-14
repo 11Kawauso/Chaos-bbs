@@ -31,7 +31,7 @@
       <div class="composer-footer">
         <span class="char-count" id="charCount">0 / 100</span>
         <span class="cooldown-label" id="cooldownLabel"></span>
-        <button class="send-btn" id="sendBtn" aria-label="送信">
+        <button class="send-btn" id="sendBtn" aria-label="送信" disabled>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3 20l18-8L3 4v6l12 2-12 2z"/>
           </svg>
@@ -39,16 +39,20 @@
       </div>
     </div>
 
-    <!-- 接続状態・エラー表示 -->
-    <div class="status" id="status">接続中…</div>
+    <!-- 接続ステータス表示 -->
+    <div class="status" id="status">接続中...</div>
 
   </main>
 
-  <!-- 右: 将来の拡張用スペース(左と対称) -->
-  <div class="side-spacer" aria-hidden="true"></div>
+  <!-- 右: 心得(道場の掛け軸風・約束が破られるたびに増える) -->
+  <aside class="precepts" aria-label="心得">
+    <h2 class="precepts-title">心得</h2>
+    <ol id="preceptsList" class="precepts-list"></ol>
+  </aside>
 
 </div>
 
+<!-- Firebase込みの本体。module指定が必須 -->
 <script type="module" src="script.js"></script>
 
 </body>

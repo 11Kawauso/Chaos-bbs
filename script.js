@@ -121,6 +121,38 @@ function maskNgWords(text) {
 }
 
 // ============================================================
+// 心得(右側の掛け軸)
+// 約束が破られるたびに、管理人が悲しみとともにここへ1行追加する。
+// 番号(一、二、三…)は自動で振られる。
+// ============================================================
+const PRECEPTS = [
+  '匿名である',
+  '投稿は消せない',
+  'どうせすぐ流れる',
+  // ↓ 破られた約束はここから下に増えていく
+];
+
+// 1〜99を漢数字にする(心得がそんなに増えないことを祈る)
+function toKanjiNum(n) {
+  const d = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  if (n < 10) return d[n];
+  const t = Math.floor(n / 10), r = n % 10;
+  return (t > 1 ? d[t] : '') + '十' + d[r];
+}
+
+function renderPrecepts() {
+  const list = document.getElementById('preceptsList');
+  if (!list) return;
+  list.innerHTML = '';
+  PRECEPTS.forEach((p, i) => {
+    const li = document.createElement('li');
+    li.textContent = `${toKanjiNum(i + 1)}、${p}`;
+    list.appendChild(li);
+  });
+}
+renderPrecepts();
+
+// ============================================================
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
