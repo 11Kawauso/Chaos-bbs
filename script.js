@@ -18,7 +18,7 @@ const firebaseConfig = {
   appId: "1:403590026261:web:acf96d0b600ee140782a1c"
 };
 
-const MAX_CHARS = 100;
+const MAX_CHARS = 50;
 const COOLDOWN_SEC = 10;    // 10秒に変更
 const MESSAGE_LIMIT = 20;   // 表示は最新20件(読み取り節約)
 const EXPIRE_DAYS = 7;      // 投稿の保持期間(TTLで自動削除される)
