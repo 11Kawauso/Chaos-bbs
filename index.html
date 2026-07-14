@@ -22,14 +22,24 @@
 
   <!-- 左: 広告枠(忍者AdMax) -->
   <aside class="ad-slot" id="adSlot" aria-label="広告スペース">
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/s/f8117ebd230b7bbc1188012f1301b2ab"></script>
-    <!-- admax -->
-    <!-- 広告がブロックされているときだけ表示される負け惜しみ -->
-    <div class="ad-fallback" id="adFallback" aria-hidden="true"></div>
-  </aside>
+    <script>
+      if (window.matchMedia('(min-width: 821px)').matches) {
+        document.write('<script src="https://adm.shinobi.jp/s/f8117ebd230b7bbc1188012f1301b2ab"><\/script>');
+      }
+    </script>
+  <div class="ad-fallback" id="adFallback" aria-hidden="true"></div>
+</aside>
 
   <main class="main">
+
+    <!-- スマホ用広告(スマホ幅のときだけ読み込み・表示) -->
+  <div class="ad-slot-mobile">
+    <script>
+      if (window.matchMedia('(max-width: 820px)').matches) {
+        document.write('<script src="https://adm.shinobi.jp/s/1d1782a16d02543f2d5804db0d79f857"><\/script>');
+      }
+    </script>
+  </div>
 
     <!-- チャット表示エリア(部屋は今は1つだけ) -->
     <div class="chat-panel" id="chatPanel" aria-live="polite">
