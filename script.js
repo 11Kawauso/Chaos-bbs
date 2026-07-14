@@ -341,7 +341,12 @@ async function send() {
 }
 
 sendBtn.addEventListener('click', send);
+
+// Enterで送信するのはPC(マウス等の精密ポインタ)のみ。
+// スマホ・タブレットではEnterは改行になり、送信は送信ボタンから行う。
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 input.addEventListener('keydown', e => {
+  if (isTouchDevice) return;
   if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
     e.preventDefault();
     send();
