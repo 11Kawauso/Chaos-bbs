@@ -215,3 +215,13 @@ body {
   .main { width: 100%; }
   .chat-panel { height: 58vh; }
 }
+
+.site-footer {
+  text-align: center;
+  font-size: 11px;
+}
+.site-footer a {
+  color: #b5b5b5;
+  text-decoration: none;
+}
+.site-footer a:hover { text-decoration: underline; }
