@@ -128,7 +128,7 @@ function maskNgWords(text) {
 const PRECEPTS = [
   '匿名である',
   '投稿は消せない',
-  'すぐ流れる',
+  '喧嘩するな',
   // ↓ 破られた約束はここから下に増えていく
 ];
 
