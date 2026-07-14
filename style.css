@@ -34,19 +34,23 @@ body {
 .ad-slot {
   flex: 0 0 160px;
   height: 600px;
-  /* border: 2px dashed #cfcfcf;
-  border-radius: 8px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: var(--text-sub);
-  font-size: 13px;
   position: sticky;
   top: 24px;
 }
-.ad-slot .ad-label { font-size: 11px; letter-spacing: 2px; }
+
+/* 広告ブロック時の負け惜しみ(通常は非表示) */
+.ad-fallback {
+  display: none;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  color: #b5b5b5;
+  font-size: 13px;
+  line-height: 2;
+}
+.ad-slot.no-ad .ad-fallback { display: flex; }
 
 /* ---- 右の心得(道場の掛け軸風・縦書き) ---- */
 .precepts {

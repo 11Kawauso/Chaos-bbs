@@ -18,7 +18,7 @@ const firebaseConfig = {
   appId: "1:403590026261:web:acf96d0b600ee140782a1c"
 };
 
-const MAX_CHARS = 50;
+const MAX_CHARS = 100;
 const COOLDOWN_SEC = 10;    // 10秒に変更
 const MESSAGE_LIMIT = 20;   // 表示は最新20件(読み取り節約)
 const EXPIRE_DAYS = 7;      // 投稿の保持期間(TTLで自動削除される)
@@ -151,6 +151,33 @@ function renderPrecepts() {
   });
 }
 renderPrecepts();
+
+// ============================================================
+// 広告ブロック時の負け惜しみ
+// 読み込みから3秒後、広告(iframe)が表示されていなければ
+// ランダムで一言表示する
+// ============================================================
+const AD_FALLBACK_MESSAGES = [
+  'ここには広告が\nあるはずだった',
+  '想像上の広告',
+  '広告ブロッカーに\n敗北した枠',
+  'このスペースの\n気持ちも考えて',
+  '【広告】\nこの枠、今日も無職',
+  '広告\n(あなたの心の中に)',
+];
+
+setTimeout(() => {
+  const slot = document.getElementById('adSlot');
+  const fallback = document.getElementById('adFallback');
+  if (!slot || !fallback) return;
+  const iframe = slot.querySelector('iframe');
+  const adVisible = iframe && iframe.offsetHeight > 0;
+  if (!adVisible) {
+    fallback.textContent =
+      AD_FALLBACK_MESSAGES[Math.floor(Math.random() * AD_FALLBACK_MESSAGES.length)];
+    slot.classList.add('no-ad');
+  }
+}, 3000);
 
 // ============================================================
 
