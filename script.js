@@ -166,18 +166,31 @@ const AD_FALLBACK_MESSAGES = [
   '広告\n(あなたの心の中に)',
 ];
 
-setTimeout(() => {
+(function watchAd() {
   const slot = document.getElementById('adSlot');
   const fallback = document.getElementById('adFallback');
   if (!slot || !fallback) return;
-  const iframe = slot.querySelector('iframe');
-  const adVisible = iframe && iframe.offsetHeight > 0;
-  if (!adVisible) {
-    fallback.textContent =
-      AD_FALLBACK_MESSAGES[Math.floor(Math.random() * AD_FALLBACK_MESSAGES.length)];
-    slot.classList.add('no-ad');
+
+  fallback.textContent =
+    AD_FALLBACK_MESSAGES[Math.floor(Math.random() * AD_FALLBACK_MESSAGES.length)];
+
+  function adVisible() {
+    const iframe = slot.querySelector('iframe');
+    return !!(iframe && iframe.offsetHeight > 0);
   }
-}, 3000);
+
+  let elapsed = 0;
+  const timer = setInterval(() => {
+    elapsed += 1000;
+    if (adVisible()) {
+      slot.classList.remove('no-ad');   // 広告が来たら負け惜しみは引っ込む
+      clearInterval(timer);
+    } else if (elapsed >= 3000) {
+      slot.classList.add('no-ad');      // 3秒待っても来なければ負け惜しみ
+    }
+    if (elapsed >= 30000) clearInterval(timer);  // 30秒で監視終了
+  }, 1000);
+})();
 
 // ============================================================
 
