@@ -373,3 +373,11 @@ input.addEventListener('keydown', e => {
 });
 
 updateCharCount();
+
+
+// 入口(例: フッターの「·」区切り文字をクリック)
+document.querySelector('.site-footer').addEventListener('click', (e) => {
+  if (e.target.tagName !== 'A') {  // リンク以外(·の部分)を押したとき
+    document.body.classList.toggle('font-chaos');
+  }
+});

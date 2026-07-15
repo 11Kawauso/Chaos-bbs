@@ -66,6 +66,13 @@
     font-size: 14px;
   }
   .back:hover { text-decoration: underline; }
+  /* about.htmlの<style>内に追加 */
+  /* 隠しリンク: 見た目は完全に地の文 */
+  .secret-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: text;   /* ホバーしてもカーソルが変わらない = 気づきにくい */
+  }
 </style>
 </head>
 <body>
@@ -99,7 +106,7 @@
     <dd>できません。仕様です。心得の二にもそう書いてあります。ただし、個人情報や権利侵害など問題のある投稿については<a href="./privacy.html">お問い合わせ</a>ください。運営者側で対応します。</dd>
 
     <dt>部屋を増やしてほしい</dt>
-    <dd>人が増えたら検討します。今この部屋に何人いるか思い出してください。</dd>
+    <dd>人が増えたら検討します。今この<a href="./room2.html" class="secret-link">部屋</a>に何人いるか思い出してください。</dd>
 
     <dt>誰と話しているんですか?</dt>
     <dd>わかりません。それがこのサイトです。</dd>

@@ -238,3 +238,8 @@ body {
     overflow: hidden;
   }
 }
+/* 発動時: 全体を明朝とPop体の悪夢ミックスに */
+body.font-chaos {
+  font-family: "HGP創英角ﾎﾟｯﾌﾟ体", "Comic Sans MS", "Yu Mincho", cursive !important;
+}
+body.font-chaos .msg:nth-child(odd) { font-family: "Impact", "Yu Gothic", fantasy !important; }
