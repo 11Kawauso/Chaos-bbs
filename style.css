@@ -67,20 +67,23 @@ body {
   position: sticky;
   top: 24px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-  overflow: hidden;
+  overflow: auto;              /* hidden → auto: はみ出したらスクロール */
+  scrollbar-width: thin;       /* スクロールバーを細く控えめに */
   display: flex;
-  align-items: center;
+  align-items: safe center;    /* 収まるときは中央、増えたら右端から左へ */
   justify-content: center;
 }
 .precepts-list {
   list-style: none;
   display: flex;
+  flex-direction: column;      /* ← 追加: 一条=一列にする(縦書きでは右→左) */
   gap: 10px;
 }
 .precepts-list li {
   font-size: 14px;
   letter-spacing: 4px;
   line-height: 1.4;
+  white-space: nowrap;         /* ← 追加: 途中で折り返さない */
 }
 
 /* ---- メイン ---- */
