@@ -5,7 +5,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/fireba
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, serverTimestamp, Timestamp,
-  query, orderBy, limit, onSnapshot
+  query, orderBy, limit, onSnapshot, where, getDocs, deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 // ---- Firebase設定 ----
@@ -238,10 +238,29 @@ signInAnonymously(auth).catch((err) => {
   statusEl.classList.add('error');
 });
 
+// ---- 期限切れ投稿の掃除(訪問者まかせTTL) ----
+// TTLポリシー(Blaze限定)の代わりに、ページを開いた人のクライアントが
+// expireAt を過ぎた投稿を少しずつ削除していく。
+// ルール側で「期限切れのものしか消せない」ことが強制されているので、
+// この処理が悪用されても生きている投稿は消せない。
+async function cleanupExpired() {
+  try {
+    const messagesRef = collection(db, 'rooms', ROOM_ID, 'messages');
+    const q = query(messagesRef, where('expireAt', '<', Timestamp.now()), limit(10));
+    const snap = await getDocs(q);
+    // 他の訪問者と競合して先に消されていても気にしない
+    await Promise.all(snap.docs.map(d => deleteDoc(d.ref).catch(() => {})));
+  } catch (err) {
+    // 掃除の失敗は無視(次の訪問者に任せる)
+  }
+}
+
 // ---- リアルタイム受信 ----
 function startListening() {
   if (started) return;
   started = true;
+
+  cleanupExpired();
 
   const messagesRef = collection(db, 'rooms', ROOM_ID, 'messages');
   const q = query(messagesRef, orderBy('createdAt', 'desc'), limit(MESSAGE_LIMIT));
