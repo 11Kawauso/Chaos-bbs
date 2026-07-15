@@ -226,6 +226,16 @@ body {
 }
 .site-footer a:hover { text-decoration: underline; }
 
+/* 「·」区切り(隠し要素の入口)。見た目は文字のままだが、
+   paddingでタップ判定を広げてスマホでも押せるようにする。
+   タップ時のハイライトも消して、隠し要素だとバレないようにする */
+.site-footer .dot {
+  padding: 14px 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* スマホ用広告枠(PCでは非表示) */
 .ad-slot-mobile { display: none; }
 
