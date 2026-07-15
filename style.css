@@ -70,7 +70,7 @@ body {
   overflow: auto;              /* hidden → auto: はみ出したらスクロール */
   scrollbar-width: thin;       /* スクロールバーを細く控えめに */
   display: flex;
-  align-items: safe center;    /* 収まるときは中央、増えたら右端から左へ */
+  align-items: flex-start;    /* 収まるときは中央、増えたら右端から左へ */
   justify-content: center;
 }
 .precepts-list {
