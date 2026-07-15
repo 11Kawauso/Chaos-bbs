@@ -1,6 +1,12 @@
 // ここだけ掲示板(仮) - Firestore接続版
 // type="module" で読み込むこと(index.html側で指定済み)
 
+console.log(
+  '%c心得 零、ソースを読む者に隠し事はできない',
+  'color: #7a9e63; font-size: 14px; font-family: serif;'
+);
+console.log('工事の音が聞こえませんか。about のどこかで。');
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 import {
