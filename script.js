@@ -379,6 +379,21 @@ input.addEventListener('keydown', e => {
   }
 });
 
+// ---- スマホ: ソフトキーボード表示時に入力欄が隠れないようスクロール ----
+// キーボードのアニメーション中に視覚ビューポートが変化するので、
+// フォーカス時と、その後のvisualViewport変化のたびに追従させる。
+function scrollComposerIntoView() {
+  input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+input.addEventListener('focus', () => {
+  setTimeout(scrollComposerIntoView, 300);
+});
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    if (document.activeElement === input) scrollComposerIntoView();
+  });
+}
+
 updateCharCount();
 
 
